@@ -42,7 +42,7 @@ YouTube_Auto_AD_Skipper/
 1. Open `chrome://extensions/`
 2. Enable **Developer mode**
 3. Click **Load unpacked**
-4. Select `c:\YT_Skipper`
+4. Select `c:\YouTube_Auto_AD_Skipper`
 5. Open YouTube and test playback
 
 ## Legal docs
