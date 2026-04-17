@@ -1,4 +1,4 @@
-# YouTube Auto Ad Skipper (Chrome Extension, MV3)
+# YouTube_Auto_AD_Skipper (Chrome Extension, MV3)
 
 Production-oriented Chrome extension to auto-skip skippable YouTube ads in background tabs without controlling the physical mouse pointer.
 
@@ -22,17 +22,12 @@ Production-oriented Chrome extension to auto-skip skippable YouTube ads in backg
 ## Project structure
 
 ```text
-YT_Skipper/
+YouTube_Auto_AD_Skipper/
 ├─ manifest.json
 ├─ README.md
 ├─ LICENSE
 ├─ PRIVACY_POLICY.md
 ├─ TERMS.md
-├─ RELEASE_CHECKLIST.md
-├─ PUBLISHING.md
-├─ scripts/
-│  ├─ package.ps1
-│  └─ push-github.ps1
 └─ src/
    ├─ background/
    │  └─ service-worker.js
@@ -49,32 +44,6 @@ YT_Skipper/
 3. Click **Load unpacked**
 4. Select `c:\YT_Skipper`
 5. Open YouTube and test playback
-
-## Build release package
-
-Run from project root:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\package.ps1
-```
-
-Output:
-
-- `dist/yt-auto-ad-skipper-v<version>.zip`
-
-## Push source to GitHub
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\push-github.ps1
-```
-
-## Productization notes
-
-- Update version in `manifest.json` before each release.
-- Keep support URL, privacy policy URL, and contact details up to date.
-- Review `RELEASE_CHECKLIST.md` before publishing.
-- For Chrome Web Store, prepare icons and screenshots.
-- Follow `PUBLISHING.md` for full release/push flow.
 
 ## Legal docs
 

@@ -29,4 +29,5 @@ Last updated: 2026-04-17
 
 ## Contact
 
-For privacy concerns, contact: `your-email@example.com`
+For privacy concerns, open an issue at:
+`https://github.com/EthanNguyen1412/YouTube_Auto_AD_Skipper/issues`
