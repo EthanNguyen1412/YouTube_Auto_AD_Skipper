@@ -215,11 +215,18 @@
       }
       const still = findBestSkipButton();
       const adOn = isAdPlaying();
-      if (adOn && still && isYtSkipButtonReady(still)) {
+      if (!adOn) {
+        resetAdState();
+        return;
+      }
+      if (still && isYtSkipButtonReady(still)) {
         skipAttemptedForCurrentAd = false;
         nextAllowedSkipAt = Date.now() + SKIP_FAIL_COOLDOWN_MS;
         log("Skip still present after attempt; cooldown then retry.");
+        return;
       }
+      // Button disappeared (DOM refresh) or not ready yet — do not stay stuck until navigation.
+      skipAttemptedForCurrentAd = false;
     }, VERIFY_SKIP_MS);
   }
 
@@ -239,6 +246,10 @@
         resetAdState();
         return;
       }
+
+      // After a click, the skip control can briefly unmount/remount; keep retrying instead of
+      // blocking on skipAttemptedForCurrentAd until yt-navigate-finish or full reload.
+      skipAttemptedForCurrentAd = false;
 
       if (!waitingSince) {
         waitingSince = Date.now();
