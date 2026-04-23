@@ -279,6 +279,21 @@
           const mainOk = !lastErr && mainResult && mainResult.ok === true;
           const isolatedOk = performFullSkipAttempt(skipButton);
 
+          if (mainOk || isolatedOk) {
+            const ver =
+              typeof chrome !== "undefined" && chrome.runtime?.getManifest
+                ? chrome.runtime.getManifest().version
+                : "?";
+            const mainDetail = mainOk
+              ? "yes" + (mainResult.mode ? ":" + mainResult.mode : "")
+              : "no" + (mainResult?.reason ? ":" + mainResult.reason : "");
+            log(
+              `[ext ${ver}] MAIN=${mainDetail}${lastErr ? " (" + lastErr.message + ")" : ""} | isolated=${isolatedOk} | debugger=skipped`
+            );
+            scheduleSkipVerify();
+            return;
+          }
+
           chrome.runtime.sendMessage({ type: "YT_SKIP_CLICK_TRUSTED_DEBUGGER" }, (dbgResult) => {
             const dbgErr = chrome.runtime.lastError;
             const dbgOk = !dbgErr && dbgResult && dbgResult.ok === true;
